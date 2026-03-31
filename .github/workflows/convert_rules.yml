@@ -14,7 +14,7 @@ jobs:
 
       - name: Process Rules
         run: |
-          mkdir -p rules
+          mkdir -p ruleset
           FILES=(
             "Anthropic.yaml"
             "AppleIntelligence.yaml"
@@ -43,7 +43,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add ruleset/*.list
           if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "Update AI rules: $(date +%Y-%m-%d)"
+            git commit -m "Update AI ruleset: $(date +%Y-%m-%d)"
             git push
           else
             echo "No changes detected, skipping."
