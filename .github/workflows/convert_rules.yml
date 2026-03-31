@@ -26,6 +26,7 @@ jobs:
             "OpenAI.yaml"
             "Trae.yaml"
             "Windsurf.yaml"
+            "xAI.yaml"
           )
           BASE_URL="https://raw.githubusercontent.com/SkywalkerJi/Clash-Rules/master/AI"
           for FILE in "${FILES[@]}"; do
