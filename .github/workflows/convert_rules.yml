@@ -34,14 +34,14 @@ jobs:
             tr -d '\r' | \
             sed -E 's/^[[:space:]]*- //g' | \
             grep -Ev "^(payload|#|[[:space:]]*$|[[:space:]]*[\{\}\[\]])" | \
-            sed 's/^[[:space:]]*//;s/[[:space:]]*$//' > "rules/${FILE%.yaml}.list"
+            sed 's/^[[:space:]]*//;s/[[:space:]]*$//' > "ruleset/${FILE%.yaml}.list"
           done
 
       - name: Commit and Push
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add rules/*.list
+          git add ruleset/*.list
           if [ -n "$(git status --porcelain)" ]; then
             git commit -m "Update AI rules: $(date +%Y-%m-%d)"
             git push
