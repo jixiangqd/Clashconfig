@@ -1,0 +1,36 @@
+- name: Process Rules
+        run: |
+          mkdir -p rules
+          
+          # 定义需要同步的文件列表
+          FILES=(
+            "Anthropic.yaml"
+            "AppleIntelligence.yaml"
+            "AugmentCode.yaml"
+            "Cursor.yaml"
+            "Gemini.yaml"
+            "Meta.yaml"
+            "MixLinux.yaml"
+            "OpenAI.yaml"
+            "Trae.yaml"
+            "Windsurf.yaml"
+          )
+          
+          BASE_URL="https://raw.githubusercontent.com/SkywalkerJi/Clash-Rules/master/AI"
+
+          for FILE in "${FILES[@]}"; do
+            echo "正在转换: $FILE"
+            
+            # 转换逻辑说明：
+            # 1. curl -sL: 静默下载
+            # 2. tr -d '\r': 删除 Windows 换行符
+            # 3. sed -E 's/^[[:space:]]*- //g': 核心转换，删除行首可能的空格以及横杠前缀
+            # 4. grep -Ev: 排除包含 payload:, 注释 #, 纯空格行, 或者 YAML 的大括号/中括号
+            # 5. sed 's/^[[:space:]]*//;s/[[:space:]]*$//': 去除行首行尾残留的空格（防止分流失败）
+            
+            curl -sL "$BASE_URL/$FILE" | \
+            tr -d '\r' | \
+            sed -E 's/^[[:space:]]*- //g' | \
+            grep -Ev "^(payload|#|[[:space:]]*$|[\{\}\[\]])" | \
+            sed 's/^[[:space:]]*//;s/[[:space:]]*$//' > "rules/${FILE%.yaml}.list"
+          done
