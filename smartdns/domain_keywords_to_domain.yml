@@ -1,0 +1,161 @@
+keywords:
+  # ==================== 📈 股票与加密货币相关 ====================
+  binance:
+    - binance.com
+    - binance.charity
+    - binance.cloud
+    - binance.co
+    - binance.ffh4x.com
+    - binance.me
+    - binance.net
+    - binance.org
+    - binance.us
+    - bnbstatic.com
+    - bnbzh.ac
+  bitget:
+    - bitget.com
+    - bitget.co
+    - bgapi.io
+    - bitgetapi.com
+  huobi:
+    - huobi.com
+    - huobiasia.vip
+    - huobigroup.com
+    - hbus.com
+    - hbg.com
+    - htx.com
+    - htx.co
+  metamask:
+    - metamask.io
+    - metamask.net
+  moonpay:
+    - moonpay.com
+    - moonpay.io
+    - moonpay.api
+  moonshot:
+    - moonshot.cn
+    - moonshot.ai
+    - kimi.chat
+    - kimicdn.com
+  okx:
+    - okx.com
+    - okx-dns.com
+    - okx-dns1.com
+    - okex.com
+
+  # ==================== 🌍 国际媒体与社交 ====================
+  1drv:
+    - 1drv.com
+    - 1drv.ms
+  1e100:
+    - 1e100.net
+  abema:
+    - abema.tv
+    - abema.io
+    - abemafrozen.tv
+    - ameba.jp
+    - ds-linear-abematv.akamaized.net
+  appledaily:
+    - appledaily.com
+    - appledaily.tw
+  avtb:
+    - avtb.video
+    - avtb01.com
+  beetalk:
+    - beetalkmobile.com
+  blogspot:
+    - blogspot.com
+    - blogspot.co.id
+    - blogspot.hk
+  dropbox:
+    - dropbox.com
+    - dropboxapi.com
+    - dropboxstatic.com
+    - dropboxusercontent.com
+  facebook:
+    - facebook.com
+    - facebook.net
+    - facebooksandbox.com
+  fbcdn:
+    - fbcdn.net
+    - fbcdn.com
+  github:
+    - github.com
+    - githubapp.com
+    - githubassets.com
+    - githubusercontent.com
+    - github.io
+  gmail:
+    - gmail.com
+  google:
+    - google.com
+    - googleapis.com
+    - googlevideo.com
+    - googleusercontent.com
+    - gvt1.com
+    - gvt2.com
+    - gstatic.com
+  instagram:
+    - instagram.com
+    - cdninstagram.com
+  onedrive:
+    - onedrive.com
+    - onedrive.live.com
+  porn:
+    - pornhub.com
+    - pornhubpremium.com
+    - phncdn.com
+    - phprcdn.com
+  sci-hub:
+    - sci-hub.se
+    - sci-hub.st
+    - sci-hub.ru
+    - sci-hub.hk
+  skydrive:
+    - skydrive.live.com
+  spotify:
+    - spotify.com
+    - scdn.co
+    - spotifycdn.com
+    - spoti.fi
+  telegram:
+    - telegram.org
+    - telegram.me
+    - t.me
+    - tdesktop.org
+    - telegram.dog
+  ttvnw:
+    - ttvnw.net
+    - twitch.tv
+  twitter:
+    - twitter.com
+    - twimg.com
+    - x.com
+    - xvideos.com
+  uk-live:
+    - bbc.co.uk
+    - bbci.co.uk
+  whatsapp:
+    - whatsapp.com
+    - whatsapp.net
+    - wa.me
+  youtube:
+    - youtube.com
+    - ytimg.com
+    - youtube-nocookie.com
+    - youtu.be
+
+  # ==================== 🚄️ 国外技术网站 ====================
+  clickhouse:
+    - clickhouse.com
+    - clickhouse.tech
+
+  # ==================== 👯‍♂️ TikTok 矩阵 ====================
+  musical.ly:
+    - musical.ly
+  tiktok:
+    - tiktok.com
+    - tiktokv.com
+    - tiktokcdn.com
+    - byteoversea.com
+    - ibyteimg.com
