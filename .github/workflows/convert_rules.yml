@@ -43,23 +43,40 @@ jobs:
           cat << 'EOF' > generate_smartdns.py
           import re
           import os
+          import yaml
           import requests
 
           # ==================== 配置区域 ====================
           INI_FILE = "urltest.ini" 
-          TARGET_KEYS = ["📈 股票相关", "🎵 YouTubeMusic", "🐟 漏网之鱼", "🌍 国际媒体", "📧 Telegram","💻 NETFLIX", "🚄️ 国外网站", "⭐️ 海外AI","🎁 Copilot","👯‍♂️ TikTok"]
+          KEYWORD_MAP_FILE = "smartdns/domain_keywords_to_domain.yml"
+          TARGET_KEYS = ["🟢 直接连接", "🚀 节点选择", "🤖 AI服务", "📈 股票相关", "🌍 国际媒体", "🚄️ 国外网站", "⭐️ 海外AI", "👯‍♂️ TikTok"]
           OUTPUT_DIR = "smartdns"
           OUTPUT_FILE = "smartdns_all_domains.txt"
           # ==================================================
 
           os.makedirs(OUTPUT_DIR, exist_ok=True)
 
+          # 1. 加载本地的关键字字典
+          keyword_dict = {}
+          if os.path.exists(KEYWORD_MAP_FILE):
+              try:
+                  with open(KEYWORD_MAP_FILE, 'r', encoding='utf-8') as y_f:
+                      yaml_data = yaml.safe_load(y_f)
+                      # 兼容 keywords 节点
+                      keyword_dict = yaml_data.get('keywords', {}) if yaml_data else {}
+                  print(f"成功加载本地字典，包含 {len(keyword_dict)} 个关键字映射。")
+              except Exception as e:
+                  print(f"错误: 读取 YAML 字典文件失败: {e}")
+                  exit(1)
+          else:
+              print(f"提示: 未找到字典文件 {KEYWORD_MAP_FILE}，将无法映射关键字。")
+
           if not os.path.exists(INI_FILE):
               print(f"错误: 找不到配置文件 {INI_FILE}")
               exit(1)
 
+          # 2. 解析 subconverter ini
           pattern = re.compile(r'^\s*surge_ruleset\s*=\s*([^,]+)\s*,\s*(http[s]?://[^\s]+)')
-
           rulesets = {}
           with open(INI_FILE, 'r', encoding='utf-8') as f:
               for line in f:
@@ -69,16 +86,12 @@ jobs:
                       url = match.group(2).strip()
                       rulesets[key] = url
 
-          print(f"从 ini 中成功解析出 {len(rulesets)} 条 surge_ruleset 配置。\n")
-
-          # 用于存放所有去重后的合法域名
           all_domains = set()
-          # 用于收集所有的 KEYWORD 记录日志
-          all_keywords = {}
+          unmapped_keywords = {} # 存放未在 yml 中定义的关键字，用于日志告警
 
+          # 3. 下载并解析各个规则文件
           for key in TARGET_KEYS:
               if key not in rulesets:
-                  print(f"提示: 指定的 Key '{key}' 在 ini 中未找到，跳过。")
                   continue
               
               url = rulesets[key]
@@ -104,35 +117,45 @@ jobs:
                   rule_type = parts[0].upper()
                   rule_value = parts[1]
 
+                  # 处理普通的域名和后缀
                   if rule_type in ["DOMAIN", "DOMAIN-SUFFIX"]:
-                      clean_domain = rule_value.lstrip('.')
-                      all_domains.add(clean_domain)
+                      all_domains.add(rule_value.lstrip('.'))
                   
+                  # 处理关键字
                   elif rule_type == "DOMAIN-KEYWORD":
-                      if key not in all_keywords:
-                          all_keywords[key] = set()
-                      all_keywords[key].add(rule_value)
+                      kw = rule_value.lower()
+                      if kw in keyword_dict and keyword_dict[kw]:
+                          # 如果字典里有，把映射出来的所有域名加进集合中
+                          for mapped_domain in keyword_dict[kw]:
+                              all_domains.add(mapped_domain.lstrip('.'))
+                      else:
+                          # 如果字典里没有，记录下来用于后续警告
+                          if key not in unmapped_keywords:
+                              unmapped_keywords[key] = set()
+                          unmapped_keywords[key].add(rule_value)
 
-          # ==================== 日志打印区域 ====================
-          print("\n==================== KEYWORD 规则审查日志 ====================")
-          if all_keywords:
-              print("⚠️ 以下策略组中包含 DOMAIN-KEYWORD 规则（已安全跳过，未写入文本）：")
-              for key, keywords in all_keywords.items():
-                  print(f"\n策略组 [{key}]:")
+          # ==================== 未知关键字审计日志 ====================
+          print("\n==================== ⚠️ 关键字字典审计日志 ====================")
+          if unmapped_keywords:
+              print("发现以下上游新增的 KEYWORD 规则未在本地 YAML 字典中定义！")
+              print("这些关键字【已被跳过】，请尽快将其补充至 smartdns/domain_keywords_to_domain.yml 中:\n")
+              for key, keywords in unmapped_keywords.items():
+                  print(f"策略组 [{key}]:")
                   for kw in sorted(keywords):
                       print(f"  - {kw}")
+                  print("")
           else:
-              print("  (所有指定的规则集中均未检测到 DOMAIN-KEYWORD 规则)")
+              print("🎉 完美！所有上游规则集中的 KEYWORD 均已在本地 YAML 字典中成功映射。")
           print("==============================================================\n")
 
-          # ==================== 统一写入单个文件 ====================
+          # ==================== 统一写入 SmartDNS 文件 ====================
           output_path = os.path.join(OUTPUT_DIR, OUTPUT_FILE)
           with open(output_path, 'w', encoding='utf-8') as out_f:
               for domain in sorted(all_domains):
                   out_f.write(f"{domain}\n")
           
-          print(f"🎉 成功！所有指定的域名已合并去重，共计 {len(all_domains)} 个。")
-          print(f"写入至: {output_path}")
+          print(f"🎉 成功！所有合并去重后的域名（含映射域名）共计 {len(all_domains)} 个。")
+          print(f"已保存至: {output_path}")
 
           EOF
           python generate_smartdns.py
