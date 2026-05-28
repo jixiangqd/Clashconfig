@@ -37,12 +37,112 @@ jobs:
             grep -Ev "^(payload|#|[[:space:]]*$|[[:space:]]*[\{\}\[\]])" | \
             sed 's/^[[:space:]]*//;s/[[:space:]]*$//' > "ruleset/${FILE%.yaml}.list"
           done
+          
+      - name: Generate SmartDNS
+        run: |
+          cat << 'EOF' > generate_smartdns.py
+          import re
+          import os
+          import requests
 
+          # ==================== 配置区域 ====================
+          INI_FILE = "urltest.ini" 
+          TARGET_KEYS = ["📈 股票相关", "🎵 YouTubeMusic", "🐟 漏网之鱼", "🌍 国际媒体", "📧 Telegram","💻 NETFLIX", "🚄️ 国外网站", "⭐️ 海外AI","🎁 Copilot","👯‍♂️ TikTok"]
+          OUTPUT_DIR = "smartdns"
+          OUTPUT_FILE = "smartdns_all_domains.txt"
+          # ==================================================
+
+          os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+          if not os.path.exists(INI_FILE):
+              print(f"错误: 找不到配置文件 {INI_FILE}")
+              exit(1)
+
+          pattern = re.compile(r'^\s*surge_ruleset\s*=\s*([^,]+)\s*,\s*(http[s]?://[^\s]+)')
+
+          rulesets = {}
+          with open(INI_FILE, 'r', encoding='utf-8') as f:
+              for line in f:
+                  match = pattern.match(line)
+                  if match:
+                      key = match.group(1).strip()
+                      url = match.group(2).strip()
+                      rulesets[key] = url
+
+          print(f"从 ini 中成功解析出 {len(rulesets)} 条 surge_ruleset 配置。\n")
+
+          # 用于存放所有去重后的合法域名
+          all_domains = set()
+          # 用于收集所有的 KEYWORD 记录日志
+          all_keywords = {}
+
+          for key in TARGET_KEYS:
+              if key not in rulesets:
+                  print(f"提示: 指定的 Key '{key}' 在 ini 中未找到，跳过。")
+                  continue
+              
+              url = rulesets[key]
+              print(f"正在下载并解析 [{key}]: {url}")
+              
+              try:
+                  response = requests.get(url, timeout=30)
+                  response.raise_for_status()
+                  content = response.text
+              except Exception as e:
+                  print(f"下载失败 {url}: {e}")
+                  continue
+
+              for line in content.splitlines():
+                  line = line.strip()
+                  if not line or line.startswith("#") or line.startswith("//"):
+                      continue
+                  
+                  parts = [p.strip() for p in line.split(',')]
+                  if len(parts) < 2:
+                      continue
+                  
+                  rule_type = parts[0].upper()
+                  rule_value = parts[1]
+
+                  if rule_type in ["DOMAIN", "DOMAIN-SUFFIX"]:
+                      clean_domain = rule_value.lstrip('.')
+                      all_domains.add(clean_domain)
+                  
+                  elif rule_type == "DOMAIN-KEYWORD":
+                      if key not in all_keywords:
+                          all_keywords[key] = set()
+                      all_keywords[key].add(rule_value)
+
+          # ==================== 日志打印区域 ====================
+          print("\n==================== KEYWORD 规则审查日志 ====================")
+          if all_keywords:
+              print("⚠️ 以下策略组中包含 DOMAIN-KEYWORD 规则（已安全跳过，未写入文本）：")
+              for key, keywords in all_keywords.items():
+                  print(f"\n策略组 [{key}]:")
+                  for kw in sorted(keywords):
+                      print(f"  - {kw}")
+          else:
+              print("  (所有指定的规则集中均未检测到 DOMAIN-KEYWORD 规则)")
+          print("==============================================================\n")
+
+          # ==================== 统一写入单个文件 ====================
+          output_path = os.path.join(OUTPUT_DIR, OUTPUT_FILE)
+          with open(output_path, 'w', encoding='utf-8') as out_f:
+              for domain in sorted(all_domains):
+                  out_f.write(f"{domain}\n")
+          
+          print(f"🎉 成功！所有指定的域名已合并去重，共计 {len(all_domains)} 个。")
+          print(f"写入至: {output_path}")
+
+          EOF
+          python generate_smartdns.py
+          
       - name: Commit and Push
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add ruleset/*.list
+          git add smartdns/*.txt
           if [ -n "$(git status --porcelain)" ]; then
             git commit -m "Update AI ruleset: $(date +%Y-%m-%d)"
             git push
