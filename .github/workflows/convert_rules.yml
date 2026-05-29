@@ -164,11 +164,17 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add ruleset/*.list
-          git add smartdns/*.txt
-          if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "Update AI ruleset: $(date +%Y-%m-%d)"
+          
+          # 1. 强制删除生成的临时 python 脚本，不留痕迹
+          rm -f generate_smartdns.py
+          
+          # 2. 仅仅把生成的 txt 结果添加到暂存区
+          git add smartdns/smartdns_all_domains.txt
+          
+          # 3. 精准判断：只有暂存区（staged）内有文件变化时才进行提交
+          if ! git diff --cached --quiet; then
+            git commit -m "Update merged SmartDNS rules with mappings: $(date +%Y-%m-%d)"
             git push
           else
-            echo "No changes detected, skipping."
+            echo "🎉 域名规则没有发生任何变化，跳过本次 Commit。"
           fi
