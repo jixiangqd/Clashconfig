@@ -12,6 +12,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Python Dependencies
+        run: |
+          pip install requests pyyaml
+
       - name: Process Rules
         run: |
           mkdir -p ruleset
@@ -49,7 +58,6 @@ jobs:
           # ==================== 配置区域 ====================
           INI_FILE = "urltest.ini" 
           KEYWORD_MAP_FILE = "smartdns/domain_keywords_to_domain.yml"
-          # 确保包含了你关心的所有策略组
           TARGET_KEYS = [
               "🟢 直接连接", "🚀 节点选择", "🤖 AI服务", "📈 股票相关", 
               "🌍 国际媒体", "🚄️ 国外网站", "⭐️ 海外AI", "👯‍♂️ TikTok",
@@ -80,39 +88,49 @@ jobs:
               print(f"错误: 找不到配置文件 {INI_FILE}")
               exit(1)
           
-          # 2. 解析 subconverter ini (修复：支持单 key 对应多 URL)
-          pattern = re.compile(r'^\s*surge_ruleset\s*=\s*([^,]+)\s*,\s*(http[s]?://[^\s]+)')
-          rulesets = {}  # 格式改为: { "策略组": ["url1", "url2", ...] }
+          # 2. 解析 subconverter ini (同时匹配远程 URL 和本地相对路径文件)
+          pattern = re.compile(r'^\s*surge_ruleset\s*=\s*([^,]+)\s*,\s*([^\s]+)')
+          rulesets = {} 
           
           with open(INI_FILE, 'r', encoding='utf-8') as f:
               for line in f:
                   match = pattern.match(line)
                   if match:
                       key = match.group(1).strip()
-                      url = match.group(2).strip()
+                      path_or_url = match.group(2).strip()
                       if key not in rulesets:
                           rulesets[key] = []
-                      rulesets[key].append(url)
+                      rulesets[key].append(path_or_url)
           
           all_domains = set()
-          unmapped_keywords = {} # 存放未在 yml 中定义的关键字
+          unmapped_keywords = {} 
           
-          # 3. 下载并解析各个规则文件
+          # 3. 获取并解析各个规则文件内容
           for key in TARGET_KEYS:
               if key not in rulesets:
                   continue
               
-              # 遍历该策略组下的所有 URL
-              for url in rulesets[key]:
-                  print(f"正在下载并解析 [{key}]: {url}")
-                  
-                  try:
-                      response = requests.get(url, timeout=30)
-                      response.raise_for_status()
-                      content = response.text
-                  except Exception as e:
-                      print(f"❌ 下载失败 {url}: {e}")
-                      continue
+              for source in rulesets[key]:
+                  content = ""
+                  # 判断是远程 URL 还是本地文件
+                  if source.startswith("http://") or source.startswith("https://"):
+                      print(f"正在下载并解析 [{key}]: {source}")
+                      try:
+                          response = requests.get(source, timeout=30)
+                          response.raise_for_status()
+                          content = response.text
+                      except Exception as e:
+                          print(f"❌ 下载失败 {source}: {e}")
+                          continue
+                  else:
+                      # 处理本地文件路径（例如 ruleset/OpenAI.list）
+                      if os.path.exists(source):
+                          print(f"正在读取本地并解析 [{key}]: {source}")
+                          with open(source, 'r', encoding='utf-8') as local_f:
+                              content = local_f.read()
+                      else:
+                          print(f"⚠️ 跳过未找到的源 [{key}]: {source}")
+                          continue
           
                   for line in content.splitlines():
                       line = line.strip()
@@ -126,11 +144,9 @@ jobs:
                       rule_type = parts[0].upper()
                       rule_value = parts[1]
           
-                      # 处理普通的域名和后缀
                       if rule_type in ["DOMAIN", "DOMAIN-SUFFIX"]:
                           all_domains.add(rule_value.lstrip('.'))
                       
-                      # 处理关键字
                       elif rule_type == "DOMAIN-KEYWORD":
                           kw = rule_value.lower()
                           if kw in keyword_dict and keyword_dict[kw]:
@@ -163,7 +179,6 @@ jobs:
           
           print(f"🎉 成功！所有合并去重后的域名（含映射域名）共计 {len(all_domains)} 个。")
           print(f"已保存至: {output_path}")
-            
           EOF
           python generate_smartdns.py
           
@@ -172,16 +187,19 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          # 1. 强制删除生成的临时 python 脚本，不留痕迹
+          # 1. 强删临时脚本
           rm -f generate_smartdns.py
           
-          # 2. 仅仅把生成的 txt 结果添加到暂存区
+          # 2. 将生成的 txt 以及第一步转换的本地规则一同加入暂存区
           git add smartdns/smartdns_all_domains.txt
+          if [ -d "ruleset" ]; then
+            git add ruleset/*.list
+          fi
           
-          # 3. 精准判断：只有暂存区（staged）内有文件变化时才进行提交
+          # 3. 精准判断提交
           if ! git diff --cached --quiet; then
-            git commit -m "Update merged SmartDNS rules with mappings: $(date +%Y-%m-%d)"
+            git commit -m "Update merged SmartDNS rules and local lists: $(date +%Y-%m-%d)"
             git push
           else
-            echo "🎉 域名规则没有发生任何变化，跳过本次 Commit。"
+            echo "🎉 所有规则文件均无变化，跳过本次 Commit。"
           fi
