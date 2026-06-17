@@ -269,6 +269,7 @@ abebooks.com
 abema.io
 abema.tv
 abemafrozen.tv
+abematv.akamaized.net
 abercrombie.com
 ablwang.com
 ably.io
@@ -419,6 +420,7 @@ aliengu.com
 aliexpress.com
 aliimg.com
 alikunlun.com
+alimama.com
 alipay.com
 alipayobjects.com
 alisoft.com
@@ -429,6 +431,7 @@ aliyuncs.com
 aliyundrive.com
 aliyundrive.net
 aljazeera.com
+alkalicore-pa.clients6.google.com
 alkalimakersuite-pa.clients6.google.com
 alkasir.com
 all4mom.org
@@ -568,10 +571,13 @@ apat1989.org
 apetube.com
 apexlegends.com
 api.ai
+api.github.com
 api.githubcopilot.com
 api.groq.com
+api.individual.githubcopilot.com
 api.microsoftapp.net
 api.mob.app.letv.com
+api.msn.com
 api.proxlet.com
 api.statsig.com
 api.together.xyz
@@ -579,6 +585,7 @@ api.viu.now.com
 apiary.io
 apigee.com
 apiintl.biliapi.net
+apiproxy-device-prod-nlb.media.com
 apis.google.com
 apk-dl.com
 apk.support
@@ -642,6 +649,7 @@ apple-relay.cloudflare.com
 apple-store.cn
 apple-store.net
 apple-store.wang
+apple-support.akadns.net
 apple-usa.net
 apple-watch.com.ru
 apple.ae
@@ -665,6 +673,7 @@ apple.co.th
 apple.co.uk
 apple.com
 apple.com.af
+apple.com.akadns.net
 apple.com.au
 apple.com.bo
 apple.com.br
@@ -673,6 +682,7 @@ apple.com.cn
 apple.com.co
 apple.com.de
 apple.com.do
+apple.com.edgekey.net
 apple.com.gr
 apple.com.gy
 apple.com.jm
@@ -967,6 +977,7 @@ appstoreapple.cn
 appule.com
 appvipshop.com
 appye.com
+appzapp.net
 aptoide.com
 apy999.com
 apyle.com
@@ -989,6 +1000,7 @@ ardrive.io
 areca-backup.org
 arena.taipei
 arethusa.su
+aria2.github.io
 arlingtoncemetery.mil
 armorgames.com
 army.mil
@@ -1028,6 +1040,7 @@ asproex.com
 asproexapi.com
 assembla.com
 assets-yammer.com
+assets.msn.com
 assimp.org
 asto.re
 astrill.com
@@ -1082,6 +1095,7 @@ avmo.pw
 avmoo.com
 avmoo.net
 avmoo.pw
+avoddashs.akamaized.net
 avodmp4s3ww-a.akamaihd.net
 avoision.com
 avtb.video
@@ -1185,6 +1199,8 @@ bbc.in
 bbc.net.uk
 bbcchinese.com
 bbcfmt.hs.llnwd.net
+bbcfmt.s.llnwi.net
+bbcfmt.vo.llnwd.net
 bbchat.tv
 bbci.co
 bbci.co.uk
@@ -1880,6 +1896,7 @@ busu.org
 busytrade.com
 buugaa.com
 buy-from-shanghai.com
+buy.itunes.apple.com
 buyaapl.com
 buyaapl.net
 buyaple.com
@@ -2040,6 +2057,7 @@ cccat.co
 cccat.io
 ccdtr.org
 ccfd.org.tw
+ccgslb.com
 cchere.com
 cchostvps.xyz
 ccim.org
@@ -2425,6 +2443,8 @@ codeskulptor.org
 cofacts.tw
 coffeemanga.to
 cognito-identity.us-east-1.amazonaws.com
+cohere.ai
+cohere.com
 coin.dance
 coin2co.in
 coinbase.com
@@ -2448,6 +2468,7 @@ cointiger.com
 cointobe.com
 cointrendz.com
 coinut.com
+colab.research.google.com
 colacloud.net
 collateralmurder.com
 collateralmurder.org
@@ -2770,6 +2791,7 @@ detaliczny.com
 deutsche-welle.de
 devcon.org
 developer-advisor.com
+developerprofiles.google
 developers.eos.io
 deviantart.com
 deviantart.net
@@ -3040,6 +3062,7 @@ dtiblog.com
 dtic.mil
 dtsell.com
 dtwang.org
+dualstack.apiproxy.media.com
 duanzhihu.com
 dubox.com
 duck.com
@@ -3056,6 +3079,7 @@ dungeonkeeper.cn
 dungeonkeeper.com
 dungeonkeeper.com.cn
 dunyabulteni.net
+duobao.com
 duokan.com
 duowan.com
 duoweitimes.com
@@ -4128,6 +4152,9 @@ gate-project.com
 gate.ac
 gate.io
 gatecoin.com
+gateway.ai.cloudflare.com
+gateway.bingviz.microsoft.net
+gateway.bingviz.microsoftapp.net
 gather.com
 gatherproxy.com
 gati.org.tw
@@ -5153,6 +5180,7 @@ icloud-sandbox.com
 icloud.ch
 icloud.cn
 icloud.com
+icloud.com.akadns.net
 icloud.com.cn
 icloud.de
 icloud.ee
@@ -5308,6 +5336,7 @@ improd.works
 imstagram.com
 imtagram.com
 in-disguise.com
+in.appcenter.ms
 in.com
 in99.org
 incapdns.net
@@ -6163,6 +6192,7 @@ localbitcoinschain.com
 localdomain.ws
 localhost
 localpresshk.com
+location.microsoft.com
 lockestek.com
 lofter.com
 log.cmpassport.com
@@ -6472,6 +6502,7 @@ mi.com
 miaopai.com
 michaelmarketl.com
 microsoft.com
+microsoftonline.com
 microsoftpersonalcontent.com
 microvpn.com
 micstl.com
@@ -6932,6 +6963,7 @@ netflav.com
 netflix.com
 netflix.com.edgesuite.net
 netflix.net
+netflixdnstest.com
 netflixdnstest0.com
 netflixdnstest1.com
 netflixdnstest2.com
@@ -7131,6 +7163,7 @@ now.com
 now.im
 nownews.com
 nowtorrents.com
+nowtv100.com
 noxinfluencer.com
 noypf.com
 np-edge.itunes.apple.com
@@ -7203,6 +7236,7 @@ nytlog.com
 nytstyle.com
 nzchinese.com
 nzchinese.net.nz
+o33249.ingest.sentry.io
 o365weve.com
 o3o.ca
 oaistatic.com
@@ -7239,6 +7273,7 @@ oculusdiving.com
 oculusforbusiness.com
 oculusrift.com
 oculusvr.com
+odc.officeapps.live.com
 odysee.com
 oex.com
 offbeatchina.com
@@ -7281,6 +7316,7 @@ olelive.com
 olevod.com
 olevod.io
 olevod.tv
+olevodcdn.com
 olevodtv.com
 olumpo.com
 olympicwatch.org
@@ -7366,6 +7402,7 @@ openwebster.com
 openwrt.org.cn
 opera-api.com
 opera.com
+opilot.microsoft.com
 oppo.com
 oppoer.me
 oppomobile.com
@@ -7923,6 +7960,7 @@ qxbbs.org
 qy.net
 qz.com
 r-pool.net
+r.bing.com
 r0.ru
 r10s.jp
 r18.com
@@ -8106,6 +8144,7 @@ rssmeme.com
 rtalabel.org
 rthk.hk
 rthk.org.hk
+rthklive.a.cdn.youtube.com
 rti.org.tw
 rti.tw
 rtycminnesota.org
@@ -8231,16 +8270,19 @@ segmentfault.com
 sehuatang.net
 sehuatang.org
 sejie.com
+self.events.data.microsoft.com
 sellclassics.com
 sendsmtp.com
 sendspace.com
 sensortower.com
 sentry.io
 seraph.me
+servd-anthropic-website.b-cdn.net
 servehttp.com
 serveuser.com
 serveusers.com
 services-apple.net
+services.bingapis.com
 services.googleapis.cn
 servicetalk.io
 sesawe.net
@@ -8460,6 +8502,7 @@ smh.com.au
 smhric.org
 smith.edu
 smn.news
+smp-device.apple.com
 smtcdns.com
 smtcdns.net
 smtp
@@ -8820,6 +8863,7 @@ storage.live.com
 storage.msn.com
 storagenewsletter.com
 store.apple.com.edgekey.net
+store.steampowered.com
 stories.google
 storify.com
 storj.io
@@ -9085,6 +9129,7 @@ terabox.com
 teraboxcdn.com
 terobox.com
 terragraph.com
+testflight.apple.com
 tether.to
 tew.org
 textnow.com
@@ -9927,6 +9972,7 @@ vocus.cc
 vod-dash-uk-live.akamaized.net
 vod-thumb-uk-live.akamaized.net
 vod360.net
+voddazn.akamaized.net
 voicettank.org
 volo.fi
 volosui.com
@@ -9935,6 +9981,7 @@ vovo2000.com
 vox-cdn.com
 voxer.com
 voy.com
+vpimg.com
 vpn.ac
 vpn.cjb.net
 vpn.net
@@ -10307,6 +10354,7 @@ www-googletagmanager.l.google.com
 www-sms-apple.com
 www.apple.com.edgekey.net
 www.asusrouter.com
+www.bing.com
 www.lamenhu.com
 www.orchidbbs.com
 www.taup.org.tw
@@ -10383,6 +10431,7 @@ xiaomi.com
 xiaomi.eu
 xiaomi.net
 xiaomicp.com
+xiaomiev.com
 xiaxiaoqiang.net
 xicons.org
 xiezhua.com
