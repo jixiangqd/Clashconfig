@@ -2713,6 +2713,7 @@ dashlane.com
 dashwood360.com
 dastrassi.org
 data-vocabulary.org
+datadoghq.com
 datalabour.com
 daum.net
 david-kilgour.com
@@ -8511,6 +8512,7 @@ smtp
 smyxy.org
 smzdm.com
 snapchat.com
+snapcraft.io
 snapdrop.net
 snapseed.com
 snaptu.com
@@ -9711,6 +9713,7 @@ ubisoft-orbit-savegames.s3.amazonaws.com
 ubisoft-uplay-savegames.s3.amazonaws.com
 ubisoft.com
 ubnw.net
+ubuntu.com
 uc-japan.org
 ucam.org
 ucanews.com
