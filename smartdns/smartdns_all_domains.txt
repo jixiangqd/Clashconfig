@@ -1841,6 +1841,7 @@ broadpressinc.com
 brockbbs.com
 brookings.edu
 browser-intake-datadoghq.com
+browser-intake-us5-datadoghq.com
 brucewang.net
 brutaltgp.com
 bsc.getblock.io
@@ -2358,6 +2359,7 @@ cixiaoya.club
 ck101.com
 clarionproject.org
 classicalguitarblog.net
+clau.de
 claude.ai
 claude.com
 claudeusercontent.com
