@@ -2502,7 +2502,6 @@ conquerwithcharacter.com
 console.groq.com
 constitutionalism.solutions
 contactmagazine.net
-content-autofill.googleapis.com
 content.jwplatform.com
 convio.net
 coobay.com
@@ -2577,7 +2576,6 @@ csdparty.com
 csgo.wmsj.cn
 csis.org
 csmonitor.com
-csp.withgoogle.com
 csuchen.de
 csw.org.uk
 ct.org.tw
@@ -3264,10 +3262,6 @@ emuparadise.me
 enanyang.my
 encoretvb.com
 encrypt.me
-encrypted-tbn0.gstatic.com
-encrypted-tbn1.gstatic.com
-encrypted-tbn2.gstatic.com
-encrypted-tbn3.gstatic.com
 encyclopedia.com
 enewstree.com
 enfal.de
@@ -3915,8 +3909,6 @@ focusvpn.com
 fofg-europe.net
 fofg.org
 fofldfradio.org
-fonts.googleapis.com
-fonts.gstatic.com
 fontsource.org
 foolsmountain.com
 fooooo.com
@@ -4592,7 +4584,6 @@ google.vg
 google.vn
 google.vu
 google.ws
-googleads.g.doubleclick.net
 googleai.com
 googleanalytics.com
 googleapis.cn
@@ -5149,7 +5140,6 @@ i-cable.com
 i-part.com.tw
 i-scmp.com
 i.org
-i.ytimg.com
 i1.hk
 i234.me
 i2p2.de
@@ -5826,7 +5816,6 @@ jkub.com
 jma.go.jp
 jmscult.com
 jmstatic.com
-jnn-pa.googleapis.com
 joachims.org
 jobso.tv
 joinbbs.net
@@ -6101,9 +6090,6 @@ lflinkup.com
 lflinkup.net
 lflinkup.org
 lfpcontent.com
-lh3.google.com
-lh3.googleusercontent.com
-lh5.googleusercontent.com
 lhakar.org
 lhasocialwork.org
 li.taipei
@@ -6374,8 +6360,6 @@ manta.com
 manyvoices.news
 maoyan.com
 maplew.com
-maps.googleapis.com
-maps.gstatic.com
 marc.info
 marguerite.su
 marioandluigidreamteam.com
@@ -7310,12 +7294,10 @@ officialdrdre.com
 officialheadphone.com
 offrezdesipods.com
 ofile.org
-ogads-pa.clients6.google.com
 ogameblog.com
 ogaoga.org
 ogate.org
 ogp.me
-ogs.google.com
 ohchr.org
 ohmyrss.com
 oikos.com.tw
@@ -7430,7 +7412,6 @@ oppo.com
 oppoer.me
 oppomobile.com
 optimism.io
-optimizationguide-pa.googleapis.com
 opus-gaming.com
 oracle.com
 oraclecloud.com
@@ -7670,7 +7651,6 @@ plantsvszombies2.com
 platform.openai.com
 play-asia.com
 play-edge.itunes.apple.com
-play.google.com
 play4free.com
 playapex.com
 playartifact.com
@@ -8785,7 +8765,6 @@ ssglobal.co
 ssglobal.me
 ssh91.com
 ssl-google-analytics.l.google.com
-ssl.gstatic.com
 ssl443.org
 sspai.com
 sspanel.net
@@ -8827,7 +8806,6 @@ starwarstheoldrepublic.com
 stateofthedapps.com
 static-economist.com
 static.cloudflareinsights.com
-static.doubleclick.net
 statically.io
 staticfile.org
 staticflickr.com
@@ -8909,7 +8887,6 @@ streamate.com
 streamguys1.com
 streamingthe.net
 streema.com
-streetviewpixels-pa.googleapis.com
 streetvoice.com
 strikingly.com
 stripe.com
@@ -9113,7 +9090,6 @@ tcpspeed.co
 tcpspeed.com
 tcsofbc.org
 tcsovi.org
-td.doubleclick.net
 tdesktop.com
 tdesktop.org
 tdm.com.mo
@@ -10075,7 +10051,6 @@ w3.org
 w3s.link
 w3schools.com
 wa.me
-waa-pa.clients6.google.com
 waffle1999.com
 wahas.com
 waigaobu.com
@@ -10387,15 +10362,9 @@ www-sms-apple.com
 www.apple.com.edgekey.net
 www.asusrouter.com
 www.bing.com
-www.google-analytics.com
-www.google.com
-www.googleapis.com
-www.googletagmanager.com
-www.gstatic.com
 www.lamenhu.com
 www.orchidbbs.com
 www.taup.org.tw
-www.youtube.com
 www1.biz
 wwwapple.com
 wwwapple.net
