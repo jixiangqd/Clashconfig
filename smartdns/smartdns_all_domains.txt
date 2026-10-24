@@ -2951,6 +2951,7 @@ doosho.com
 doourbest.org
 dorjeshugden.com
 dot-mac.de
+dota2.com
 dota2.wmsj.cn
 dotfacebook.com
 dotfacebook.net
@@ -8833,6 +8834,7 @@ steamcdn-a.akamaihd.net
 steamchina.com
 steamcommunity-a.akamaihd.net
 steamcommunity.com
+steamconnecttest.com
 steamcontent.com
 steamcontent.tnkjmec.com
 steamdeck.com
@@ -9876,6 +9878,7 @@ v2mm.tech
 v2ray.com
 v2raycn.com
 valeursactuelles.com
+valve.net
 valvesoftware.com
 van001.com
 van698.com
