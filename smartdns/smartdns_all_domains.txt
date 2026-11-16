@@ -286,6 +286,7 @@ ac-pocketcamp.com
 acast.com
 accessfacebookfromschool.com
 accim.org
+account.diabrowser.engineering
 accountkit.com
 acebooik.com
 acebook.com
@@ -346,6 +347,7 @@ agoogleaday.com
 agro.hk
 ahcdn.com
 ai-kan.net
+ai-service.diabrowser.engineering
 ai-wen.net
 ai.azure.com
 ai.com
@@ -2380,6 +2382,7 @@ clickhouse.com
 clickhouse.tech
 clickserve.dartsearch.net
 client-api.arkoselabs.com
+clientstream.launchdarkly.com
 cling.omy.sg
 clinica-tibet.ru
 clipconverter.cc
@@ -8089,6 +8092,7 @@ reimu.net
 relaxbbs.com
 relay.com.tw
 releaseinternational.org
+releases.diabrowser.com
 religionnews.com
 religioustolerance.org
 renminbao.com
